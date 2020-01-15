@@ -48,6 +48,20 @@ class BotsPage extends React.Component {
     })
   }
 
+  handleSort = () => {
+    // console.log('clicking on the sort button')
+    
+    let sortedBots = [...this.state.allBots].sort(function (a, b) {
+      if (a.name < b.name) return -1;
+      else if (a.name > b.name) return 1;
+      return 0;
+    });
+
+    this.setState({
+      allBots: sortedBots
+    })
+  }
+
   render() {
 
     return (
@@ -58,6 +72,10 @@ class BotsPage extends React.Component {
         handleArmyClick={this.handleArmyClick}
         renderShowPage={this.renderShowPage}
         />
+
+        <button onClick={this.handleSort} >Sort Bot Collection Alphabetically</button>
+        <br></br>
+        <br></br>
 
         {this.state.showPage ? 
 
