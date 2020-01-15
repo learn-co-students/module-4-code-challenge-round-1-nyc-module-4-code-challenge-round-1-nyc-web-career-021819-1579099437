@@ -1,13 +1,16 @@
 import React from "react";
 import BotCollection from '../containers/BotCollection'
 import YourBotArmy from '../containers/YourBotArmy'
+import BotSpecs from '../components/BotSpecs'
 
 class BotsPage extends React.Component {
   //start here with your code for step one
 
   state = {
     allBots: [],
-    yourBots: []
+    yourBots: [],
+    showPage: false,
+    showBot: {}
   }
 
   componentDidMount() {
@@ -32,6 +35,13 @@ class BotsPage extends React.Component {
     }
   }
 
+  renderShowPage = (bot) => {
+    this.setState({
+      showPage: !this.state.showPage,
+      showBot: bot
+    })
+  }
+
   render() {
 
     return (
@@ -41,11 +51,9 @@ class BotsPage extends React.Component {
         yourBots={this.state.yourBots}
         handleArmyClick={this.handleArmyClick}
         />
-        
-        <BotCollection 
-        allBots={this.state.allBots} 
-        handleArmyClick={this.handleArmyClick}
-        />
+
+        {this.state.showPage ? <BotSpecs bot={this.state.showBot} /> : <BotCollection allBots={this.state.allBots} handleArmyClick={this.handleArmyClick} renderShowPage={this.renderShowPage}/>}
+
       </div>
     );
   }
