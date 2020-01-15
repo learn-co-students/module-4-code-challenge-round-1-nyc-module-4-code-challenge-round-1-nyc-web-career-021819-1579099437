@@ -56,9 +56,10 @@ class BotsPage extends React.Component {
         <YourBotArmy 
         yourBots={this.state.yourBots}
         handleArmyClick={this.handleArmyClick}
+        renderShowPage={this.renderShowPage}
         />
 
-        {this.state.showPage ? <BotSpecs bot={this.state.showBot} handleArmyClick={this.handleArmyClick} backToList={this.backToList}/> : <BotCollection allBots={this.state.allBots} handleArmyClick={this.handleArmyClick} renderShowPage={this.renderShowPage}/>}
+        {this.state.showPage ? <BotSpecs bot={this.state.showBot} handleArmyClick={this.handleArmyClick} backToList={this.backToList} renderShowPage={this.renderShowPage} /> : <BotCollection allBots={this.state.allBots} handleArmyClick={this.handleArmyClick} renderShowPage={this.renderShowPage}/>}
 
       </div>
     );
