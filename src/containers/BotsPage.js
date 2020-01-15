@@ -1,5 +1,6 @@
 import React from "react";
 import BotCollection from '../containers/BotCollection'
+import YourBotArmy from '../containers/YourBotArmy'
 
 class BotsPage extends React.Component {
   //start here with your code for step one
@@ -17,12 +18,25 @@ class BotsPage extends React.Component {
       }))
   }
 
+  handleArmyClick = (bot) => {
+    console.log('clicking add to army for this bot: ', bot)
+    this.setState({
+      yourBots: [...this.state.yourBots, bot]
+    })
+  }
+
   render() {
 
     return (
       <div>
         {/* put your components here */}
-        <BotCollection allBots={this.state.allBots}/>
+        <BotCollection 
+        allBots={this.state.allBots} 
+        handleArmyClick={this.handleArmyClick}
+        />
+
+        <YourBotArmy 
+        yourBots={this.state.yourBots}/>
       </div>
     );
   }
