@@ -2,12 +2,16 @@ import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
 import BotSpecs from "../components/BotSpecs";
+import NavBar from "../components/NavBar";
 
 class BotsPage extends React.Component {
   state = {
     allBots: [],
+    classBots: [],
     yourBots: [],
-    botSpecs: ''
+    botSpecs: '',
+    searchValue: '',
+    filterValue: 'No filter'
   }
 
   componentDidMount() {
@@ -16,7 +20,8 @@ class BotsPage extends React.Component {
       .then(data => {
         // console.log(data)
         this.setState({
-          allBots: data
+          allBots: data,
+          classBots: data
         })
       })
   }
@@ -47,10 +52,33 @@ class BotsPage extends React.Component {
     this.setState({
       yourBots: newYourBots
     })
-    
+  }
+
+  handleSearch = (e) => {
+    this.setState({
+      searchValue: e.target.value
+    })
+  }
+
+  handleFilter = (e) => {
+    let TempAllBots
+    if (e.target.value === 'No filter') {
+      TempAllBots = this.state.allBots
+    } else {
+      TempAllBots = [...this.state.allBots].filter(bot => bot.bot_class === e.target.value)
+    }
+    this.setState({
+      classBots: TempAllBots
+    })
+    this.setState({
+      filterValue: e.target.value
+    })
   }
 
   render() {
+
+    let filteredBots = [...this.state.classBots].filter(bot => 
+        bot.name.toLowerCase().startsWith(this.state.searchValue.toLowerCase()))
 
     let xXx
     if (this.state.botSpecs) {
@@ -58,8 +86,16 @@ class BotsPage extends React.Component {
                       handleEnlist={this.handleEnlist}
                       handleBack={this.handleBack}/>
     } else {
-      xXx = <BotCollection allBots={this.state.allBots}
-                           handleSelected={this.handleSelected}/>
+      xXx = (
+        <div>
+          <NavBar searchValue={this.state.searchValue}
+                  handleSearch={this.handleSearch}
+                  filterValue={this.state.filterValue}
+                  handleFilter={this.handleFilter} />
+          <BotCollection allBots={filteredBots}
+                         handleSelected={this.handleSelected}/>
+        </div>
+      )
     }
 
     return (
