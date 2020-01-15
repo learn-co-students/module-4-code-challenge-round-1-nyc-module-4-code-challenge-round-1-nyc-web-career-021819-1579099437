@@ -37,13 +37,13 @@ class BotsPage extends React.Component {
     return (
       <div>
         {/* put your components here */}
-        <BotCollection 
-        allBots={this.state.allBots} 
-        handleArmyClick={this.handleArmyClick}
-        />
-
         <YourBotArmy 
         yourBots={this.state.yourBots}
+        handleArmyClick={this.handleArmyClick}
+        />
+        
+        <BotCollection 
+        allBots={this.state.allBots} 
         handleArmyClick={this.handleArmyClick}
         />
       </div>
