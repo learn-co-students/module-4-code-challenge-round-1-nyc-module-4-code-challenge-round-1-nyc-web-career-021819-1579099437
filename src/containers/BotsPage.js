@@ -10,7 +10,8 @@ class BotsPage extends React.Component {
     allBots: [],
     yourBots: [],
     showPage: false,
-    showBot: {}
+    showBot: {},
+    filter: ''
   }
 
   componentDidMount() {
@@ -87,7 +88,7 @@ class BotsPage extends React.Component {
         renderShowPage={this.renderShowPage}
         />
 
-        <div className='sort buttons'>
+        <div className='sort and filter'>
           <button onClick={this.handleAlphaSort} >Sort Bot Collection Alphabetically</button>
           <br></br>
           <br></br>
