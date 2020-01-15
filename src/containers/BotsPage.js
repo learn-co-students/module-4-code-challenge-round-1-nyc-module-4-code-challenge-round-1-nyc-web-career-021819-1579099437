@@ -48,17 +48,31 @@ class BotsPage extends React.Component {
     })
   }
 
-  handleSort = () => {
+  handleAlphaSort = () => {
     // console.log('clicking on the sort button')
     
-    let sortedBots = [...this.state.allBots].sort(function (a, b) {
+    let alphaSortedBots = [...this.state.allBots].sort(function (a, b) {
       if (a.name < b.name) return -1;
       else if (a.name > b.name) return 1;
       return 0;
     });
 
     this.setState({
-      allBots: sortedBots
+      allBots: alphaSortedBots
+    })
+  }
+
+  handleHealthSort = () => {
+    // console.log('clicking on the sort button')
+    
+    let healthSortedBots = [...this.state.allBots].sort(function (a, b) {
+      if (a.health < b.health) return 1;
+      else if (a.health > b.health) return -1;
+      return 0;
+    });
+
+    this.setState({
+      allBots: healthSortedBots
     })
   }
 
@@ -73,9 +87,14 @@ class BotsPage extends React.Component {
         renderShowPage={this.renderShowPage}
         />
 
-        <button onClick={this.handleSort} >Sort Bot Collection Alphabetically</button>
-        <br></br>
-        <br></br>
+        <div className='sort buttons'>
+          <button onClick={this.handleAlphaSort} >Sort Bot Collection Alphabetically</button>
+          <br></br>
+          <br></br>
+          <button onClick={this.handleHealthSort} >Sort Bot Collection By Health</button>
+          <br></br>
+          <br></br>
+        </div>
 
         {this.state.showPage ? 
 
