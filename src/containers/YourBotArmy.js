@@ -7,7 +7,7 @@ class YourBotArmy extends React.Component {
   render(){
 
     let yourBotsArray = this.props.yourBots.map(botObj => {
-      return <BotCard bot={botObj} key={botObj.id}/>
+      return <BotCard bot={botObj} handleArmyClick={this.props.handleArmyClick} key={botObj.id}/>
     })
 
     return (

@@ -19,10 +19,17 @@ class BotsPage extends React.Component {
   }
 
   handleArmyClick = (bot) => {
-    console.log('clicking add to army for this bot: ', bot)
-    this.setState({
-      yourBots: [...this.state.yourBots, bot]
-    })
+    // console.log('clicking add to army for this bot: ', bot)
+    if (this.state.yourBots.some(item => bot.id === item.id)) {
+      // console.log('need to remove bot from yourBots')
+      this.setState({
+        yourBots: this.state.yourBots.filter(item => item.id !== bot.id)
+      })
+    } else {
+        this.setState({
+          yourBots: [...this.state.yourBots, bot]
+        })
+    }
   }
 
   render() {
@@ -36,7 +43,9 @@ class BotsPage extends React.Component {
         />
 
         <YourBotArmy 
-        yourBots={this.state.yourBots}/>
+        yourBots={this.state.yourBots}
+        handleArmyClick={this.handleArmyClick}
+        />
       </div>
     );
   }
