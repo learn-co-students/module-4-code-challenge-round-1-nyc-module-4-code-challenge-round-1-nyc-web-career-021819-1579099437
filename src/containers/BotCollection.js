@@ -20,7 +20,7 @@ class BotCollection extends React.Component {
 						key={bot.id}
 						bot={bot}
 						handleClick={this.props.handleClick}
-						removeFromArmy={this.props.removeFromArmy}
+	
 					/>)
 				})
 			  }

@@ -31,24 +31,18 @@ class BotsPage extends React.Component {
     })
   }
 
-  
-
-  removeFromArmy=(solider)=>{
-    console.log(solider)
-  }
 
   render() {
     return (
       <div>
         <YourBotArmy
           army={this.state.army}
-
+          handleClick={this.handleClick}
         />
         {
           <BotCollection
             allBots={this.state.allBots}
             handleClick={this.handleClick}
-            removeFromArmy={this.removeFromArmy}
           />
         }
       </div>

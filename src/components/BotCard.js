@@ -25,7 +25,7 @@ const BotCard = props => {
         className="ui card"
         key={bot.id}
         onClick={
-          props.isClicked? ()=>props.removeFromArmy(props.isClicked) : () => props.handleClick(props.bot)
+          () => props.handleClick(props.bot)
           }
       >
         <div className="image">
