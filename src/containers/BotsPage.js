@@ -1,6 +1,8 @@
 import React from "react";
 import BotCollection from "./BotCollection";
 import YourBotArmy from "./YourBotArmy";
+import BotSpecs from "../components/BotSpecs";
+
 
 
 
@@ -8,7 +10,9 @@ class BotsPage extends React.Component {
 
   state ={
     allBots: [],
-    botArmy: []
+    botArmy: [],
+    selectedBot: null,
+    isBotSelected: false
   }
 
   componentDidMount() {
@@ -21,32 +25,49 @@ class BotsPage extends React.Component {
       });
   }
 
-  handleClick = (botobj) => { 
-    if (!this.state.botArmy.includes(botobj)) {
-      this.setState({
-        botArmy: [...this.state.botArmy, botobj]
-      })    
-    } else {
-      const newbots = this.state.botArmy.filter( bot => bot !== botobj)
-      console.log(newbots)
-      this.setState ({
-        botArmy: newbots
-      })
-    }
+  // handleClick = (botobj) => { 
+  //   if (!this.state.botArmy.includes(botobj)) {
+  //     this.setState({
+  //       botArmy: [...this.state.botArmy, botobj]
+  //     })    
+  //   } else {
+  //     const newbots = this.state.botArmy.filter( bot => bot !== botobj)
+  //     console.log(newbots)
+  //     this.setState ({
+  //       botArmy: newbots
+  //     })
+  //   }
+  // }
+
+  handleClick = (botObj) => {
+    this.setState({
+      selectedBot: botObj,
+      isBotSelected: true
+    })
   }
+
+
 
  
   render() {
+    console.log(this.state)
     return (
       <div>
         <YourBotArmy 
           botArmy={this.state.botArmy}
           handleClick={this.handleClick}
-          />
-        <BotCollection 
-          allBots={this.state.allBots}
-          handleClick={this.handleClick}
         />
+
+        {this.state.isBotSelected 
+          ? <BotSpecs 
+              selectedBot={this.state.selectedBot} 
+            />
+          : <BotCollection 
+              allBots={this.state.allBots} 
+              handleClick={this.handleClick}
+            />
+        }
+
       </div>
     );
   }
