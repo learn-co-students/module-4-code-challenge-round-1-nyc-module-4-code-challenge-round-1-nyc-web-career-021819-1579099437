@@ -21,13 +21,14 @@ class BotsPage extends React.Component {
       });
   }
 
-  handleClick = (bot) => { 
-    if (!this.state.botArmy.includes(bot)) {
+  handleClick = (botobj) => { 
+    if (!this.state.botArmy.includes(botobj)) {
       this.setState({
-        botArmy: [...this.state.botArmy, bot]
+        botArmy: [...this.state.botArmy, botobj]
       })    
     } else {
-      const newbots = this.state.botArmy.filter( bot => bot.id !== bot.id)
+      const newbots = this.state.botArmy.filter( bot => bot !== botobj)
+      console.log(newbots)
       this.setState ({
         botArmy: newbots
       })
