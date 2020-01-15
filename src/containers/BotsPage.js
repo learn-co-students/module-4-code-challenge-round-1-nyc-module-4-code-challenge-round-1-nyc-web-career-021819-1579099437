@@ -8,7 +8,6 @@ class BotsPage extends React.Component {
 
   state = {
     allBots: [],
-    // notYourBots : [],
     yourBots : []
   }
 
@@ -18,13 +17,27 @@ class BotsPage extends React.Component {
     // add to not your bots
 
   handleSelection = (props) => {
-    this.state.allBots.map(bot => {
-      if (bot.id === props.bot.id) {
-        this.setState({yourBots : [...this.state.yourBots, bot]})
-        bot.signaler = "true"
-        console.log(bot)
-      }
-    })
+    // this.state.allBots.map(bot => {
+    //   if (bot.id === props.bot.id) {
+    //     this.setState({yourBots : [...this.state.yourBots, bot]})
+    //     bot.signaler = "true"
+    //   }
+    // })
+    props.bot.signal? null : this.setState({yourBots : [...this.state.yourBots, props.bot]})
+    props.bot.signal = true
+  }
+
+  handleUnselection = (props) => {
+    let x = this.state.yourBots.filter(bot => bot.id !== props.bot.id)
+    this.setState({yourBots : x })
+    props.bot.signal = false
+
+    // this.setState({yourBots: []})
+    // this.state.yourBots.map(bot => {
+    //   if (bot.id !== props.id) {
+    //     this.setState({yourBots : [...this.state.yourBots, bot]})
+    //   }
+    // })
   }
 
 
@@ -33,7 +46,6 @@ class BotsPage extends React.Component {
     .then(resp => resp.json())
     .then(data => {
       this.setState({allBots: data})
-      console.log(this.state.allBots)
     })
   }
 
@@ -43,24 +55,28 @@ class BotsPage extends React.Component {
 
     // let rightBots = this.state.allBots.filter(bot => bot.signaler === "true")
     // console.log("rightbots", rightBots)
-
-    
+  
     // let yourBots = this.state.allBots.map(bot => {
     //   if(bot.signaler === "true") {
     //     return bot
     //   }
     // })
-
-    let notYourBots = this.state.allBots.filter(bot => bot.signaler !== "true")
-
     // console.log("Not your bots", notYourBots)
     // console.log("Your bots", yourBots)
+    // let notYourBots = this.state.allBots.filter(bot => bot.signaler !== "true")
+
+  
+
 
     return (
       <div>
-        <YourBotArmy yourBots = {this.state.yourBots}/>
+        <YourBotArmy 
+        yourBots = {this.state.yourBots}
+        handleUnselection = {this.handleUnselection}
+        handleSelection = {this.handleSelection}/>
         <BotCollection 
-        allBots = {notYourBots} 
+        allBots = {this.state.allBots} 
+        handleUnselection = {this.handleUnselection}
         handleSelection = {this.handleSelection} />
       </div>
     );
