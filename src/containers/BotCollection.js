@@ -1,12 +1,13 @@
 import React from "react";
 import BotCard from "../components/BotCard";
+import BotSpecs from "../components/BotSpecs";
 
 class BotCollection extends React.Component {
   //your code here
  bots = this.props.botCollection
  
 state ={
-	  allBots: this.bots,
+	  allBots: null,
 	  currentBot: null
 	  
   }
@@ -20,11 +21,18 @@ state ={
 
   renderBots = (bots) => {
 	// console.log(bots)  
-	return bots.map( each => <BotCard key = {each.id} bot = {each} handleClick = {this.renderBotSpecs}/>)
+	return bots.map( each => <BotCard key = {each.id} bot = {each} handleClick = {this.props.addToArmy}/>)
   }
 
-  renderBotSpecs = (bot) => {
-	  console.log(bot)
+   // save selected bot to state then render the single bot spec component instead of the full list of all
+   // "add bot to army will not"
+  renderBotSpecs = (currBot) => {
+	//   this.setState({
+	// 	  currentBot:currBot
+	//   })
+	  
+	//   console.log(bot)
+	//  <BotSpecs bot ={bot}/>
   }
 
   render(){
@@ -34,7 +42,7 @@ state ={
     		  {this.renderBots(this.props.botCollection)}
     		  Collection of all bots
 			  {/* {this.renderBotSpecs(this.State.currentBot)} */}
-
+			{this.renderBotSpecs(this.state.currentBot)}
     		</div>
   	  </div>
   	);
