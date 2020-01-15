@@ -24,7 +24,9 @@ const BotCard = props => {
       <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        //add click handler to add bot to my army or add back to main container
+        onClick={() => props.enlistBot}
+        //onClick={(clickedBot) => console.log("add code to connect event listener")}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
