@@ -1,13 +1,18 @@
 import React from "react";
 class BotCard extends React.Component {  
   
+//still not sure how to code the handleclick, gonna try things.
+  state = {
+    null: null
+  }
   
+
   render() {
-    console.log(this.props.bots)
     let bot = this.props.bots
-
     let botType;
+    console.log(this.props.handleclick)
 
+  
   switch (bot.bot_class) {
     case "Assault":
       botType = <i className="icon military" />;
@@ -27,7 +32,8 @@ class BotCard extends React.Component {
         <div
         className="ui card"
         key={bot.id}
-        onClick={() => console.log("add code to connect event listener")}
+        onClick={this.props.handleclick}
+        // hmm how to get this to work
         >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />
