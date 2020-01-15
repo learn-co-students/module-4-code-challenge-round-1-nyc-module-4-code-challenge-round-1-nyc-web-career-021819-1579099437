@@ -34,7 +34,7 @@ class BotsPage extends React.Component {
   }
 
   render() {
-    console.log(this.state.army)
+    // console.log(this.state.army)
     return (
       <div>
         <YourBotArmy army={this.state.army} removeBot={this.removeBot} />

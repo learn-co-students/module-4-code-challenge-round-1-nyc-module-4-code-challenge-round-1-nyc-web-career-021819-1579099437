@@ -73,13 +73,24 @@ Before proceeding to the next part of the challenge, __be sure to stage a commit
 
 ### 4. Improve
 
-Now that you have some of the functionality of your app, it's time to improve the interface. Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
+Now that you have some of the functionality of your app, it's time to improve the interface.
+
+  [] Rather than enlisting the bot into the army, clicking on the card should instead display a show view (`BotSpecs`) for that bot, which should replace `BotCollection`. BotSpecs should have two buttons: one to go back to the list view and another to enlist that bot.
 
 This improved version should look like the following:
 
 ![alt text][full_demo]
 
 [full_demo]: ./public/full_demo.gif "Full demo"
+
+
+
+
+
+
+
+
+
 
 
 ### BONUS
