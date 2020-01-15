@@ -19,13 +19,15 @@ const BotCard = props => {
       botType = <div />;
   }
 
+  // bot.signal? () => props.handleUnselection(props) () => props.handleSelection(props)
+
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={bot.signal? () => props.handleUnselection(props) : () => props.handleSelection(props)}
-        // onClick ={() => props.handleUnselection(props)}
+        onClick={() => props.handleView(props)}
+        
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />

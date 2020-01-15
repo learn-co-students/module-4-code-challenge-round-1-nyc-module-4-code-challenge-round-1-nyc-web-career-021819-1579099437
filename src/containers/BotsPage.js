@@ -8,7 +8,8 @@ class BotsPage extends React.Component {
 
   state = {
     allBots: [],
-    yourBots : []
+    yourBots : [],
+    viewBot: null
   }
 
    // map over all robots and if selected robot by id matches current robot
@@ -38,6 +39,16 @@ class BotsPage extends React.Component {
     //     this.setState({yourBots : [...this.state.yourBots, bot]})
     //   }
     // })
+  }
+
+  handleView = (props) => {
+    this.setState({viewBot : props.bot})
+    console.log(this.state.viewBot)
+
+  }
+
+  handleBack = () => {
+    this.setState({viewBot : null})
   }
 
 
@@ -71,11 +82,15 @@ class BotsPage extends React.Component {
     return (
       <div>
         <YourBotArmy 
+        handleView = {this.handleView}
         yourBots = {this.state.yourBots}
         handleUnselection = {this.handleUnselection}
         handleSelection = {this.handleSelection}/>
-        <BotCollection 
+        <BotCollection
+        handleBack = {this.handleBack}
+        viewBot = {this.state.viewBot}
         allBots = {this.state.allBots} 
+        handleView = {this.handleView}
         handleUnselection = {this.handleUnselection}
         handleSelection = {this.handleSelection} />
       </div>
