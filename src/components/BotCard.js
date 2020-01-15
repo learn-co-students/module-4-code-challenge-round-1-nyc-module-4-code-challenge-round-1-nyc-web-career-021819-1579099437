@@ -1,7 +1,7 @@
 import React from "react";
 
 const BotCard = props => {
-  let { bot, yourBot} = props;
+  let { bot, handleOnClick } = props;
 
 
   let botType;
@@ -24,18 +24,13 @@ const BotCard = props => {
       botType = <div />;
   }
 
-  // const handleOnClick = () => {
-  //   // props.yourBotArray = [...props.yourBotArray, e.target]
-  //   yourBot <= bot
-  //   console.log(yourBot)
-  // }
 
   return (
     <div className="ui column">
       <div
         className="ui card"
         key={bot.id}
-        onClick={props.handleOnClick}
+        onClick={handleOnClick}
       >
         <div className="image">
           <img alt="oh no!" src={bot.avatar_url} />

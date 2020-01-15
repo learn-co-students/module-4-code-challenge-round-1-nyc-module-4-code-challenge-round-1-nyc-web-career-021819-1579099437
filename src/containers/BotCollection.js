@@ -5,23 +5,19 @@ import YourBotArmy from "./YourBotArmy";
 class BotCollection extends React.Component {
   //your code here
 
-//   state = {
-// 	bots: this.props.botsArray
-//   }
 
- handleOnClick = () => {
+ handleOnClick = (newBot) => {
 	// props.yourBotArray = [...props.yourBotArray, e.target]
-	<YourBotArmy yourBotArray={this.state.yourBotArray}/>
+	this.setState({yourBots: [...this.props.yourBotArray, newBot]})
     
   }
 
   render(){
-	console.log(this.props)
   	return (
   	  <div className="ui four column grid">
     		<div className="row" >
     		  {/*...and here..*/}
-    		  {this.props.botsArray.map((bot, yourBot) => <BotCard bot={bot}  yourBot={yourBot} onClick={this.handleOnClick}/>)}
+    		  {this.props.botsArray.map((bot, yourBot) => <BotCard bot={bot}  handleOnClick={this.handleOnClick}/>)}
     		</div>
   	  </div>
   	);
