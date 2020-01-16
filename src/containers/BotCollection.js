@@ -11,7 +11,7 @@ class BotCollection extends React.Component {
     		<div className="row">
     		  {/*...and here..*/}
     		  Collection of all bots
-			  {this.props.bots.map(buts => <BotCard bots = {buts} key = {buts.id} handleclick = {this.props.handleclick}/>)}
+			  {this.props.bots.map(buts => <BotCard bots = {buts} key = {buts.id} handleclick = {this.props.handleclick} specClick = {this.props.specClick}/>)}
 			  {/* this took me around 10 minutes and longer udring the code challenge, I ended up looking up old code. */}
     		</div>
   	  </div>

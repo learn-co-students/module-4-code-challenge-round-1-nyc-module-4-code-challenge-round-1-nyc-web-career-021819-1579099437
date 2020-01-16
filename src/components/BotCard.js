@@ -9,7 +9,6 @@ class BotCard extends React.Component {
     // console.log(this.props.bots)
   const bot = this.props.bots;
   // console.log(this.props)
-
   let botType;
 
   switch (bot.bot_class) {
@@ -32,7 +31,7 @@ class BotCard extends React.Component {
         <div
           className="ui card"
           key={bot.id}
-          onClick={()=>this.props.handleclick(bot)}
+          onClick={()=>this.props.specClick(bot)}
         >
           <div className="image">
             <img alt="oh no!" src={bot.avatar_url} />
