@@ -12,7 +12,7 @@ class BotCollection extends React.Component {
     		<div className="row">
 			  {this.props.allBots.map(bots => (<BotCard
 				bot={bots}
-				enlistBot={bots.enlistBot}
+				enlistBot={this.props.enlistBot}
 				// key={bots.id}
 				// name={bots.name}
 				// health={bots.health}

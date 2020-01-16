@@ -25,26 +25,29 @@ class BotsPage extends React.Component {
 
 //handle click event on card to switch state of bot between
 //my army and general collection 
-//state of allBots switches t/f?
 //use spread operator to safely add bot to array
-//remove from old collection
   enlistBot = (clickedBot) => {
-    // this.setState({
-    //   // allBots: 
-    //   myBots: [...this.state.myBots, clickedBot]
-    // })
-    console.log(clickedBot, "hi")
+    if (this.state.myBots.includes(clickedBot)) {
+      this.setState({
+        myBots: this.state.myBots.filter(bot => clickedBot.id !== bot.id)
+     })} else {
+    this.setState({
+      myBots: [...this.state.myBots, clickedBot],
+    })}
   }
 
+//clickedBot.id == bot.id filters to just view that specific bot
+
   render() {
-    console.log(this.state.allBots)
+    // console.log(this.state.allBots)
     return (
       <div>
+        <YourBotArmy myBots={this.state.myBots}
+        enlistBot={this.enlistBot}
+          />
         <BotCollection allBots={this.state.allBots} 
         enlistBot={this.enlistBot}/>
-        <YourBotArmy myBots={this.state.myBots}
-        enlistBot={this.enlistBot()}
-        />
+        
       </div>
     );
   }

@@ -25,8 +25,9 @@ class YourBotArmy extends React.Component {
             Your Bot Army
             {this.props.myBots.map(bots => (<BotCard
               bot={bots}
-              handleClick={this.handleClick}
-              enlistBot={this.props.enlistBot}/>))}
+              // handleClick={this.handleClick}
+              enlistBot={this.props.enlistBot}
+              />))}
           </div>
         </div>
       </div>
